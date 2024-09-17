@@ -1,7 +1,15 @@
 #!/bin/bash
-#
-#default path to net
-DEFAULT_PATH=${1:-"$HOME/cardano/testnet"}
+
+# This script starts a Cardano node using a dynamic or provided path for node files.
+# Usage:
+#   - To use the default testnet-node path: ./testnet_run_node.sh
+#   - To specify a custom path: ./testnet_run_node.sh /custom/path/to/node
+
+# Get the directory where the script is located
+SCRIPT_DIR=$(dirname "$(realpath "$0")")
+
+# Define default paths based on the script's location or argument
+DEFAULT_PATH=${1:-"$SCRIPT_DIR/../testnet-node"}
 
 # Check if the provided path or default path exists
 if [ ! -d "$DEFAULT_PATH" ]; then
